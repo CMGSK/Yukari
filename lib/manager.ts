@@ -1,4 +1,5 @@
 import { aliexpress } from "./aliexpress";
+import { amazon } from "./amazon";
 
 export interface UrlCleaner {
     matches(url: URL): boolean;
@@ -6,7 +7,8 @@ export interface UrlCleaner {
 }
 
 const cleaners: readonly UrlCleaner[] = [
-    aliexpress
+    aliexpress,
+    amazon
 ];
 
 export function cleanUrl(input: string): string {
