@@ -10,5 +10,13 @@ export default defineConfig({
         action: {
             default_title: "Remove tracking params"
         },
+        browser_specific_settings: {
+            gecko: {
+                data_collection_permissions: {
+                    required: ['none']
+                }
+            }
+        }
     },
+
 });
