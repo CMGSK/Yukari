@@ -1,4 +1,4 @@
-import { clean } from "@/lib/aliexpress";
+import { cleanUrl } from "@/lib/manager";
 
 export default defineBackground(() => {
   browser.browserAction.onClicked.addListener(async (tab) => {
@@ -6,8 +6,8 @@ export default defineBackground(() => {
           return;
       }
       try {
-          const cleanUrl = clean(tab.url);
-          await navigator.clipboard.writeText(cleanUrl);
+          const url: string = cleanUrl(tab.url);
+          await navigator.clipboard.writeText(url);
       } catch (err) {
           console.error(err);
       }

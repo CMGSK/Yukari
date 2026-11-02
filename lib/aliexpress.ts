@@ -1,17 +1,24 @@
-export function clean(input: string): string {
-    const url = new URL(input);
-    const hostname = url.hostname.toLowerCase();
+import type { UrlCleaner } from "./manager";
 
-    if (!hostname.endsWith('aliexpress.com')) {
-        throw new Error('Not an AliExpress URL');
+export const aliexpress: UrlCleaner = {
+    matches(url: URL): boolean {
+        const hostname = url.hostname.toLowerCase();
+        return (
+            hostname.endsWith('.aliexpress.com') ||
+            hostname === 'aliexpress.com'
+            );
+    },
+
+    clean(url: URL): URL {
+        // Only /item/<ID>.html excluding trailing slash and trackings
+        if (!url.pathname.match(/\/item\/(\d+)\.html$/i)) {
+            throw new Error('Not a valid AliExpress product URL');
+        }
+
+        url.search = '';
+        url.hash = '';
+
+        return url;
     }
 
-    // Only /item/<ID>.html excluding trailing slash and trackings
-    if (!url.pathname.match(/\/item\/(\d+)\.html$/i)) {
-        throw new Error('Not a valid AliExpress product URL');
-    }
-    url.search = '';
-    url.hash = '';
-
-    return url.toString();
-}
+} satisfies UrlCleaner;
