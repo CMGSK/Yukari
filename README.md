@@ -7,7 +7,7 @@
 Yukari is a Firefox extension that converts unnecessarily, annoying, idiotic-long product URLs with twenty thousand bazillion tracking parameters into short, hostname recognizable URLs. Because fuck pasting 20 lines worth of URL to share a funny T-Shirt with a friend.
 
 ## Supported websites
-Right now, only Aliexpress and Amazon are supported, but the code is designed to make extending it an effortless task.
+Right now, only Aliexpress, Amazon and YouTube are supported, but the code is designed to make extending it an effortless task.
 
 ## Usage
 Just click the Yukari icon in your extensions toolbar, it's not rocket science.

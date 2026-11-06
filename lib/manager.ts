@@ -1,12 +1,13 @@
 import { aliexpress } from "./aliexpress";
 import { amazon } from "./amazon";
+import { youtube } from "./youtube";
 
 export interface UrlCleaner {
   matches(url: URL): boolean;
   clean(url: URL): URL;
 }
 
-const cleaners: readonly UrlCleaner[] = [aliexpress, amazon];
+const cleaners: readonly UrlCleaner[] = [aliexpress, amazon, youtube];
 
 export function cleanUrl(input: string): string {
   const url = new URL(input);
